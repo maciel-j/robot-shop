@@ -1,0 +1,25 @@
+    1  curl http://localhost:8080/api/cart/metrics
+    2  docker-compose -f docker-compose.yaml -f docker-compose-load.yaml up
+    3  cd robot-shop/
+    4  docker run    --detach    --name instana-agent    --volume /var/run:/var/run    --volume /run:/run    --volume /dev:/dev:ro    --volume /sys:/sys:ro    --volume /var/log:/var/log:ro    --privileged    --net=host    --pid=host    --env="INSTANA_AGENT_ENDPOINT=ingress-coral-saas.instana.io"    --env="INSTANA_AGENT_ENDPOINT_PORT=443"    --env="INSTANA_AGENT_KEY=_7fI7V2iSTegPNhmzmhAbg"    --env="INSTANA_DOWNLOAD_KEY=_7fI7V2iSTegPNhmzmhAbg"    icr.io/instana/agent
+    5  cd robot-shop/
+    6  docker-compose -f docker-compose.yaml -f docker-compose-load.yaml up
+    7  history >> history.txt
+    1  git clone https://github.com/maciel-j/robot-shop.git
+    2  cd robot-shop
+    3  export INSTANA_AGENT_KEY="_7fI7V2iSTegPNhmzmhAbg"
+    4  echo $INSTANA_AGENT_KEY
+    5  docker-compose pull
+    6  docker-compose up -d
+    7  docker login containers.instana.io -u _ -p $INSTANA_AGENT_KEY
+    8  docker run   --name robot-shop   -e INSTANA_AGENT_KEY='_7fI7V2iSTegPNhmzmhAbg'   -e INSTANA_AGENT_ENDPOINT='ingress-coral-saas.instana.io'   -e INSTANA_AGENT_ENDPOINT_PORT=443   -v /var/run/docker.sock:/var/run/docker.sock   containers.instana.io/instana/release/agent/dynamic:latest
+    9  docker-compose down -d
+   10  docker-compose down
+   11  docker-compose -f docker-compose.yaml -f docker-compose-load.yaml up
+   12  docker-compose -f docker-compose.yaml -f docker-compose-load.yaml up -d
+   13  docker run   --name robot-shop   -e INSTANA_AGENT_KEY='_7fI7V2iSTegPNhmzmhAbg'   -e INSTANA_AGENT_ENDPOINT='ingress-coral-saas.instana.io'   -e INSTANA_AGENT_ENDPOINT_PORT=443   -v /var/run/docker.sock:/var/run/docker.sock   containers.instana.io/instana/release/agent/dynamic:latest
+   14  docker ps
+   15  docker ps -a
+   16  docker rm b0f618bdd4b7
+   17  docker run   --name robot-shop   -e INSTANA_AGENT_KEY='_7fI7V2iSTegPNhmzmhAbg'   -e INSTANA_AGENT_ENDPOINT='ingress-coral-saas.instana.io'   -e INSTANA_AGENT_ENDPOINT_PORT=443   -v /var/run/docker.sock:/var/run/docker.sock   containers.instana.io/instana/release/agent/dynamic:latest
+   18  history >> history.txt
